@@ -1,46 +1,29 @@
-# Alishba Shafiq portfolio
+# Alishba's Portfolio
 
-A static site plus one small serverless function. Hosted on Vercel.
+An AI-powered personal portfolio website featuring an interactive chatbot that answers questions about my background, skills, and projects.
 
-```
-index.html        the page
-style.css         all styles
-app.js            the assistant, scroll animations, certificate viewer
-favicon.svg
-images/           the project pictures
-logos/            company logos cropped from your certificates
-cv/               the CV (PDF) behind the Download CV button
-certificates/     five Forage certificates (PDF and PNG preview)
-api/chat.js       sends typed questions to Groq (openai/gpt-oss-120b)
-api/_facts.js     the only facts the assistant may use
-```
+🔗 **Live Demo:** [https://alishbaportfolio-8tn0ru1ra-me-5d49.vercel.app](https://alishbaportfolio-8tn0ru1ra-me-5d49.vercel.app)
 
-## Deploy on Vercel
+## Features
 
-1. Create an empty GitHub repository and upload everything in this folder (keep the folders as they are).
-2. On vercel.com choose **Add New, Project** and import that repository. Framework preset: **Other**. Leave the build settings empty.
-3. Before the first deploy, open **Environment Variables** and add `GROQ_API_KEY` with a key from console.groq.com/keys.
-4. Press **Deploy**. Open the site on your phone and on a laptop.
+- **AI Assistant** – Ask anything about my experience, skills, or projects.
+- **Smart Fallback** – Pre-written answers for common questions; falls back to Groq API only when needed.
+- **Role-Based Prompts** – Tailored questions for AI Developer, Full Stack, and QA roles.
+- **Fact-Checked** – Answers are strictly limited to verified facts from my resume.
+- **Accessible** – Keyboard-friendly, ARIA labels, and skip-to-content link.
+- **Responsive** – Works on desktop and mobile.
 
-## How the assistant works
+## Tech Stack
 
-- The role buttons and the nine suggested questions use fixed answers written in `app.js`. They work even if Groq is down.
-- A typed or spoken question is first matched against the saved answers. If nothing matches, it goes to `/api/chat`, which asks `openai/gpt-oss-120b` on Groq to answer only from `api/_facts.js`.
-- If the AI service fails, the assistant uses the closest saved answer, or says it does not know and shows your email.
-- The microphone uses the browser's built-in speech recognition. It works in Chrome and Edge over https, and it is hidden in browsers that do not support it. The Listen button uses the browser's built-in voice.
+- HTML, CSS, JavaScript
+- Vercel Serverless Functions
+- Groq API (LLaMA 3)
+- Deployed on Vercel
 
-## Things to check after deploying
+## Repository
 
-- Ask three typed questions that are not in the suggested list, and one question that is not about you. The answers should stay short and true.
-- Click every GitHub button and every Show certificate button.
-- Try the microphone in Chrome on your phone.
+GitHub: [https://github.com/Alishba-12/Alishba_Portfolio](https://github.com/Alishba-12/Alishba_Portfolio)
 
-## Updating content
+## License
 
-- Change a saved answer: edit the `BANK` list at the top of `app.js`.
-- Change what the AI may say: edit `api/_facts.js`. Keep it true.
-- Add a repository link: edit the buttons in `index.html`.
-- Swap a project picture: replace the file in `images/` with the same name (keep it near 1200 px wide).
-- Download CV button: it opens `cv/Alishba_Shafiq_CV.pdf`, the combined CV without phone number and address. To update the CV, replace that file and keep the name.
-- The pictures on the project cards are concept illustrations, so each one carries a "Concept visual" label. Remove the label only if you replace a picture with a real screenshot.
-- The rate limit in `api/chat.js` is 20 questions per visitor every 10 minutes. It resets when Vercel restarts the function.
+MIT
