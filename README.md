@@ -23,7 +23,3 @@ An AI-powered personal portfolio website featuring an interactive chatbot that a
 ## Repository
 
 GitHub: [https://github.com/Alishba-12/Alishba_Portfolio](https://github.com/Alishba-12/Alishba_Portfolio)
-
-## License
-
-MIT
